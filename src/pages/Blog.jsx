@@ -13,7 +13,7 @@ export default function Blog() {
   useEffect(()=>{
     if(slug){setPostLoading(true);fetchBlogPost(slug).then(r=>setPost(r.post)).catch(()=>navigate("/blog")).finally(()=>setPostLoading(false));}
     else{setPost(null);setLoading(true);fetchBlogPosts(filter!=="All"?{category:filter,limit:9}:{limit:9}).then(r=>setPosts(r.posts||[])).catch(()=>setPosts([])).finally(()=>setLoading(false));}
-  },[slug,filter]);
+  },[slug,filter,navigate]);
   if(slug){
     return (<><style>{`.blog-post-hero{background:linear-gradient(135deg,var(--dark),#0f0640);padding:140px 0 60px;text-align:center;}.blog-post-body{max-width:760px;margin:0 auto;padding:60px 24px;}.blog-post-body p{font-size:17px;line-height:1.85;color:#333;margin-bottom:20px;}.blog-post-body h2{font-size:28px;margin:32px 0 16px;}`}</style>
       <div className="blog-post-hero"><div className="container"><button className="btn-ghost" onClick={()=>navigate("/blog")} style={{marginBottom:24}}>← Back to Blog</button><h1 style={{fontSize:"clamp(28px,4vw,52px)",color:"white",maxWidth:760,margin:"0 auto 16px"}}>{post?.title||""}</h1><p style={{color:"rgba(255,255,255,.6)",fontSize:15}}>✍️ {post?.author} &nbsp;·&nbsp; ⏱ {post?.read_time} read</p></div></div>

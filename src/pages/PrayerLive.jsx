@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import * as api from "../api/hshApi";
-
+import { Room as LiveKitRoom } from "livekit-client";
 /*
   URL: /prayer-live
   URL: /prayer-live?room=ABC123  ← listeners join directly via link
@@ -386,7 +386,70 @@ function Room({ session, role, onLeave, showToast }) {
   const streamRef = useRef(null);
   const analyser  = useRef(null);
   const audioCtx  = useRef(null);
+  const lkRoom = useRef(null);
+  useEffect(() => {
+    if (!session) return;
+  
+    const start = async () => {
+      try {
+        // 🔐 Get token from PHP
+        const res = await fetch(
+          `https://api.holyspirithubinternational.org/getToken.php?room=${session.code}&name=${session.myName || session.host}`
+        );
+        const data = await res.json();
+  
+        const room = new LiveKitRoom({
+          // 👇 THIS IS CRITICAL
+          rtcConfig: {
+            iceTransportPolicy: "all", // allow fallback
+          }
+        });
+  
+        // 🔗 Connect to LiveKit
+        await room.connect("wss://hhi-prayer-live-hhbnf8fx.livekit.cloud", data.token);
+  
+        lkRoom.current = room;
+  
+        console.log("✅ Connected to LiveKit");
+  
+        // 🎙️ HOST → publish mic
+        if (role === "host") {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  
+          const track = stream.getAudioTracks()[0];
 
+          await room.localParticipant.publishTrack(track);
+          console.log("🎙️ Mic published");
+        }
+  
+        // 🎧 LISTENER → receive audio
+        room.on("trackSubscribed", (track) => {
+          if (track.kind === "audio") {
+            console.log("🔥 TRACK RECEIVED");
+        
+            const audioEl = document.createElement("audio");
+        
+            audioEl.srcObject = new MediaStream([track.mediaStreamTrack]);
+            audioEl.autoplay = true;
+            audioEl.playsInline = true;
+        
+            document.body.appendChild(audioEl);
+        
+            console.log("🎧 Audio element attached");
+          }
+        });
+  
+      } catch (err) {
+        console.error("❌ LiveKit error:", err);
+      }
+    };
+  
+    start();
+  
+    return () => {
+      lkRoom.current?.disconnect();
+    };
+  }, [session, role]);
   // Mic setup for host
   useEffect(() => {
     if (role !== "host") return;
@@ -410,7 +473,7 @@ function Room({ session, role, onLeave, showToast }) {
       })
       .catch(()=>showToast("Mic access denied — demo mode active"));
     return () => { streamRef.current?.getTracks().forEach(t=>t.stop()); audioCtx.current?.close(); };
-  }, [role]);
+  }, [role, showToast]);
 
   // Simulate new listeners
   useEffect(() => {
@@ -437,7 +500,7 @@ function Room({ session, role, onLeave, showToast }) {
       } catch {}
     }, 3500);
     return ()=>clearInterval(t);
-  }, [role, session?.code, isLive]);
+  }, [role, session?.code, isLive, showToast]);
 
   useEffect(() => { chatRef.current?.scrollIntoView({behavior:"smooth"}); }, [messages]);
 
