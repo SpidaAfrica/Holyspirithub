@@ -48,7 +48,7 @@ export default function Give() {
         </div>
       </div>
       <div>
-        <div style={{background:"var(--grey-light)",borderRadius:20,padding:32,marginBottom:20}}><h3 style={{fontSize:20,marginBottom:10}}>Giving Categories</h3><ul style={{listStyle:"none",display:"flex",flexDirection:"column",gap:10,fontSize:14,color:"var(--grey)"}}>{[["🌾","Offering","General ministry operations"],["💰","Tithe","Return to God a tenth"],["🌍","Missions","Fund global outreach"],["🏗️","Building","Physical & digital infrastructure"]].map(([icon,n,d])=><li key={n} style={{display:"flex",gap:10}}><span style={{fontSize:20}}>{icon}</span><div><strong>{n}</strong> — {d}</div></li>)}</ul></div>
+        <div style={{background:"var(--grey-light)",borderRadius:20,padding:32,marginBottom:20}}><h3 style={{fontSize:20,marginBottom:10}}>Giving Categories</h3><ul style={{listStyle:"none",display:"flex",flexDirection:"column",gap:10,fontSize:14,color:"var(--grey)"}}>{[["🌾","Offering","General ministry operations"],["💰","Tithe","Return to God a tenth"],["🌍","Crusades & Missions","Fund local & global outreach"],["🏗️","Building","Physical & digital infrastructure"]].map(([icon,n,d])=><li key={n} style={{display:"flex",gap:10}}><span style={{fontSize:20}}>{icon}</span><div><strong>{n}</strong> — {d}</div></li>)}</ul></div>
         <div className="scripture-card"><blockquote>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</blockquote><cite>— 2 Corinthians 9:7</cite></div>
       </div>
     </div></div></section>
