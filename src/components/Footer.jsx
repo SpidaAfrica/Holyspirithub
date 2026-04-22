@@ -58,7 +58,7 @@ export default function Footer() {
             <div className="footer-col">
               <h4>Ministry</h4>
               <ul>
-                {[["/about","About"],["/teachings","Teachings"],["/watch","Watch Live"],["/events","Events"],["/prayer","Prayer"],["/prayer-live","Pray Live 🔴"]].map(([to,l]) => (
+                {[["/about","About"],["/teachings","Teachings"],["/watch","Watch Live"],["/events","Events"],["/prayer","Prayer"]/*["/prayer-live","Pray Live 🔴"]*/].map(([to,l]) => (
                   <li key={to}><Link to={to}>{l}</Link></li>
                 ))}
               </ul>
@@ -82,8 +82,8 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer-bottom">
-            <span>© 2025 HolySpirit Hub. All rights reserved.</span>
-            <span style={{color:"var(--gold)"}}>Where the Spirit is, there is freedom.</span>
+            <span>© 2026 HolySpirit Hub. All rights reserved.</span>
+            <span style={{color:"var(--gold)"}}>WE RELY ON THE HOLYSPIRIT!</span>
           </div>
         </div>
       </footer>
