@@ -3,7 +3,56 @@ import { subscribeNewsletter } from "../api/hshApi";
 export default function Community() {
   const [email,setEmail]=useState("");const [loading,setLoading]=useState(false);const [msg,setMsg]=useState("");
   useEffect(()=>{ document.title="Community — HolySpirit Hub"; },[]);
-  const ways=[{icon:"💬",title:"WhatsApp Community",desc:"Join our active WhatsApp community for daily devotionals, discussions and prayer.",action:"Join WhatsApp Group",color:"#25D366"},{icon:"📱",title:"Telegram Channel",desc:"Follow our Telegram for teaching notifications and Spirit-led content.",action:"Join Telegram",color:"#0088cc"},{icon:"🎥",title:"YouTube Channel",desc:"Subscribe for all our teachings, worship sessions and conference recordings.",action:"Subscribe",color:"#FF0000"},{icon:"📘",title:"Facebook Group",desc:"Join our Facebook community for discussions, testimonies and livestreams.",action:"Join Facebook Group",color:"#1877F2"},{icon:"📸",title:"Instagram",desc:"Follow for daily quotes, devotionals and event coverage.",action:"Follow on Instagram",color:"#E1306C"},{icon:"🌐",title:"Small Groups",desc:"Find or start a Spirit-focused small group in your city or online.",action:"Find a Group",color:"var(--blue)"}];
+  const ways = [
+  {
+    icon: "💬",
+    title: "WhatsApp Community",
+    desc: "Join our active WhatsApp community for daily devotionals, discussions and prayer.",
+    action: "Join WhatsApp Group",
+    color: "#25D366",
+    link: "https://chat.whatsapp.com/Ca3KQpFt6fbJT2cWXlaWNc"
+  },
+  {
+    icon: "📱",
+    title: "Telegram Channel",
+    desc: "Follow our Telegram for teaching notifications and Spirit-led content.",
+    action: "Join Telegram",
+    color: "#0088cc",
+    link: "https://t.me/apostleuwabenjaminmessages/"
+  },
+  {
+    icon: "🎥",
+    title: "YouTube Channel",
+    desc: "Subscribe for all our teachings, worship sessions and conference recordings.",
+    action: "Subscribe",
+    color: "#FF0000",
+    link: "https://www.youtube.com/@holyspirithub"
+  },
+  {
+    icon: "📘",
+    title: "Facebook Group",
+    desc: "Join our Facebook community for discussions, testimonies and livestreams.",
+    action: "Join Facebook Group",
+    color: "#1877F2",
+    link: "https://facebook.com/theholyspirithub"
+  },
+  {
+    icon: "📸",
+    title: "Instagram",
+    desc: "Follow for daily quotes, devotionals and event coverage.",
+    action: "Follow on Instagram",
+    color: "#E1306C",
+    link: "https://instagram.com/YOUR_PAGE"
+  },
+  {
+    icon: "🌐",
+    title: "Small Groups",
+    desc: "Find a Spirit-focused small group in your city or online.",
+    action: "Find a Group",
+    color: "var(--blue)",
+    link: "https://chat.whatsapp.com/Ca3KQpFt6fbJT2cWXlaWNc" // internal page
+  }
+];
   const handleSub=async e=>{e.preventDefault();setLoading(true);try{const r=await subscribeNewsletter({email});setMsg(r.message);setEmail("");}catch(err){setMsg(err.message);}finally{setLoading(false);}};
   return (<>
     <style>{`.com-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}.com-card{background:white;border-radius:20px;padding:32px;border:1px solid rgba(26,10,255,.08);text-align:center;transition:all .3s;}.com-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.1);}.com-btn{display:inline-block;padding:11px 24px;border-radius:50px;font-size:14px;font-weight:500;color:white;cursor:pointer;border:none;font-family:var(--ff);transition:all .2s;}.com-btn:hover{opacity:.85;transform:translateY(-2px);}@media(max-width:900px){.com-grid{grid-template-columns:repeat(2,1fr);}}@media(max-width:600px){.com-grid{grid-template-columns:1fr;}}`}</style>
