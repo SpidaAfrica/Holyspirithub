@@ -109,7 +109,7 @@ export default function Home() {
               <Link to="/about" className="btn-ghost">Our Story</Link>
             </div>
             <div className="hero-stats">
-              {[["50K+","Lives Touched"],["120+","Nations"],["500+","Teachings"]].map(([n,l])=>(
+              {[["5K+","Lives Touched"],["1","Nation"],["50+","Teachings"]].map(([n,l])=>(
                 <div key={l}><div className="hero-stat-num">{n}</div><div className="hero-stat-label">{l}</div></div>
               ))}
             </div>
@@ -124,17 +124,17 @@ export default function Home() {
       {/* WHAT WE DO */}
       <section className="section">
         <div className="container">
-          {/* Live Prayer Banner */}
+          {/* Live Prayer Banner 
           <Link to="/prayer-live" style={{textDecoration:"none"}}>
             <div className="live-prayer-banner">
               <div className="live-dot"/>
               <div className="live-banner-text">
-                <h3>🎙️ Live Prayer Room</h3>
+                <h3>🎙️ Live Prayer Room coming soon</h3>
                 <p>Join or lead a live prayer session — worship, intercession and encounters in real time.</p>
               </div>
               <div className="live-banner-cta">Join Now →</div>
             </div>
-          </Link>
+          </Link> */}
 
           <div style={{textAlign:"center",maxWidth:560,margin:"0 auto"}}>
             <div className="label">Our Ministry</div>
@@ -161,7 +161,7 @@ export default function Home() {
             <div className="feat-msg">
               <div className="feat-video"><div className="play-btn">▶</div></div>
               <div className="feat-info">
-                <div className="label">Featured Teaching</div>
+                <div className="label">Latest Teaching</div>
                 <h2>{featured.title}</h2>
                 <div className="feat-meta">
                   <span>📅 {featured.published_at?.slice(0,10)}</span>
@@ -264,7 +264,7 @@ export default function Home() {
         <div className="container">
           <div className="cta-banner">
             <h2>Ready to encounter the Holy Spirit?</h2>
-            <p>Join thousands worldwide discovering daily life with the Spirit of God.</p>
+            <p>Join hundreds worldwide discovering daily life with the Spirit of God.</p>
             <div className="cta-actions">
               <Link to="/community" className="btn-gold">Join Our Community</Link>
               <Link to="/prayer" className="btn-ghost">Submit a Prayer Request</Link>
