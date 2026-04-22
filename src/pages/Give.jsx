@@ -12,8 +12,8 @@ export default function Give() {
     <section className="section"><div className="container"><div className="give-grid">
       <div><div className="label">Make a Donation</div><h2 className="section-title">Give <em>Today</em></h2><div className="divider"/>
         <div className="give-card">
-          <div className="give-types">{["offering","tithe","missions","building"].map(t=><button key={t} className={`give-type ${type===t?"active":""}`} onClick={()=>setType(t)}>{t.charAt(0).toUpperCase()+t.slice(1)}</button>)}</div>
-      {/*<form onSubmit={handleGive}>
+         {/* <div className="give-types">{["offering","tithe","missions","building"].map(t=><button key={t} className={`give-type ${type===t?"active":""}`} onClick={()=>setType(t)}>{t.charAt(0).toUpperCase()+t.slice(1)}</button>)}</div>
+      <form onSubmit={handleGive}>
             <p style={{fontSize:14,color:"var(--grey)",marginBottom:10}}>Select or enter amount (₦)</p>
             <div className="presets">{presets.map(p=><button key={p} type="button" className={`preset ${amount===p?"active":""}`} onClick={()=>setAmount(p)}>₦{Number(p).toLocaleString()}</button>)}</div>
             <div className="amt-wrap"><span className="amt-sym">₦</span><input className="amt-input" placeholder="0" value={amount} onChange={e=>setAmount(e.target.value.replace(/\D/g,""))}/></div>
