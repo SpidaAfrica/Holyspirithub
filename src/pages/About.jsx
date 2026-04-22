@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import logoBlue from "../assets/logo-blue.png";
 
 export default function About() {

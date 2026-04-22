@@ -473,7 +473,7 @@ function Room({ session, role, onLeave, showToast }) {
       })
       .catch(()=>showToast("Mic access denied — demo mode active"));
     return () => { streamRef.current?.getTracks().forEach(t=>t.stop()); audioCtx.current?.close(); };
-  }, [role, showToast]);
+  }, [role]);
 
   // Simulate new listeners
   useEffect(() => {
@@ -500,7 +500,7 @@ function Room({ session, role, onLeave, showToast }) {
       } catch {}
     }, 3500);
     return ()=>clearInterval(t);
-  }, [role, session?.code, isLive, showToast]);
+  }, [role, session?.code, isLive]);
 
   useEffect(() => { chatRef.current?.scrollIntoView({behavior:"smooth"}); }, [messages]);
 
