@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { to: "/watch",      label: "Watch Live" },
   { to: "/events",     label: "Events"     },
   { to: "/prayer",     label: "Prayer"     },
-  { to: "/prayer-live",label: "Pray Live 🔴"},
+  //{ to: "/prayer-live",label: "Pray Live 🔴"},
   { to: "/blog",       label: "Blog"       },
   { to: "/contact",    label: "Contact"    },
 ];
