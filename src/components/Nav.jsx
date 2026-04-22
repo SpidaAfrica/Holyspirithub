@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logoWhite from "../assets/logo-white.png";
+import logoFull from "../assets/logo-full.png";
 
 const NAV_LINKS = [
   { to: "/",           label: "Home"       },
@@ -60,7 +60,7 @@ export default function Nav() {
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
         <div className="nav-inner">
           <Link to="/" className="nav-logo">
-            <img src={logoWhite} alt="HolySpirit Hub" />
+            <img src={logoFull} alt="HolySpirit Hub" />
           </Link>
           <ul className="nav-links">
             {NAV_LINKS.map(l => (
