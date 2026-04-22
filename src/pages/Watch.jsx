@@ -9,7 +9,7 @@ export default function Watch() {
     <div className="page-hero"><h1><em style={{color:"var(--gold)"}}>Watch</em> Live</h1><p>Join us from anywhere in the world for Spirit-led worship and teaching.</p></div>
     <section className="section"><div className="container">
       <div className="label">Live Stream</div><h2 className="section-title">Join Us <em>Online</em></h2>
-      <div className="stream-wrap"><div style={{textAlign:"center",color:"white"}}><div className="live-badge-big">LIVE every Sunday & Wednesday</div><div className="big-play-btn">▶</div><h3 style={{fontSize:22,marginBottom:8}}>Stream starts soon</h3><p style={{color:"rgba(255,255,255,.5)",fontSize:15}}>Join at the scheduled times below</p><div style={{marginTop:24}}><button className="btn-gold">Set a Reminder</button></div></div></div>
+      <div className="stream-wrap"><div style={{textAlign:"center",color:"white"}}><div className="live-badge-big">LIVE every Sunday</div><div className="big-play-btn"><a href="https://www.youtube.com/@holyspirithub">▶</a></div><h3 style={{fontSize:22,marginBottom:8}}>Stream starts soon</h3><p style={{color:"rgba(255,255,255,.5)",fontSize:15}}>Join at the scheduled times below</p><div style={{marginTop:24}}>{/*<button className="btn-gold">Set a Reminder</button>*/}</div></div></div>
       <h3 style={{fontSize:28,fontFamily:"var(--ffh)",marginBottom:8}}>Service Schedule</h3>
       <p style={{color:"var(--grey)",marginBottom:32}}>All times are in West Africa Time (WAT).</p>
       {loading?<div className="loading-screen"><span className="spinner spinner-dark"/></div>:
