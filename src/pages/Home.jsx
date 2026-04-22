@@ -170,8 +170,8 @@ export default function Home() {
                 </div>
                 <p>{featured.description}</p>
                 <div style={{display:"flex",gap:16,flexWrap:"wrap"}}>
-                  <Link to="/teachings" className="btn-primary">Watch Now</Link>
-                  <button className="btn-ghost">Download Audio</button>
+                  {/*<Link to="/teachings" className="btn-primary">Watch Now</Link>*/}
+                  <Link to="/teachings" className="btn-ghost">Listen</Link>
                 </div>
               </div>
             </div>
