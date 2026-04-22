@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { initializeDonation } from "../api/hshApi";
 export default function Give() {
-  const [amount,setAmount]=useState("");const [type,setType]=useState("offering");const [email,setEmail]=useState("");const [name,setName]=useState("");const [loading,setLoading]=useState(false);const [errMsg,setErrMsg]=useState("");
+  {/* const [amount,setAmount]=useState("");const [type,setType]=useState("offering");const [email,setEmail]=useState("");const [name,setName]=useState("");const [loading,setLoading]=useState(false);const [errMsg,setErrMsg]=useState("");*/}
   useEffect(()=>{ document.title="Give — HolySpirit Hub"; },[]);
   const presets=["1000","5000","10000","25000","50000"];
   const fmt=n=>n?"₦"+Number(n).toLocaleString():"₦0";
