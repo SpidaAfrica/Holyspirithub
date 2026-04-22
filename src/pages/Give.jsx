@@ -13,7 +13,7 @@ export default function Give() {
       <div><div className="label">Make a Donation</div><h2 className="section-title">Give <em>Today</em></h2><div className="divider"/>
         <div className="give-card">
           <div className="give-types">{["offering","tithe","missions","building"].map(t=><button key={t} className={`give-type ${type===t?"active":""}`} onClick={()=>setType(t)}>{t.charAt(0).toUpperCase()+t.slice(1)}</button>)}</div>
-          <form onSubmit={handleGive}>
+      {/*<form onSubmit={handleGive}>
             <p style={{fontSize:14,color:"var(--grey)",marginBottom:10}}>Select or enter amount (₦)</p>
             <div className="presets">{presets.map(p=><button key={p} type="button" className={`preset ${amount===p?"active":""}`} onClick={()=>setAmount(p)}>₦{Number(p).toLocaleString()}</button>)}</div>
             <div className="amt-wrap"><span className="amt-sym">₦</span><input className="amt-input" placeholder="0" value={amount} onChange={e=>setAmount(e.target.value.replace(/\D/g,""))}/></div>
@@ -22,7 +22,29 @@ export default function Give() {
             {errMsg&&<div className="give-err">{errMsg}</div>}
             <button type="submit" className="btn-gold" style={{width:"100%",justifyContent:"center",fontSize:16,padding:16}} disabled={loading}>{loading?<span className="spinner"/>:`Give ${fmt(amount)} via Paystack 🙏`}</button>
             <div style={{display:"flex",alignItems:"center",gap:8,fontSize:13,color:"var(--grey)",marginTop:14}}>🔒 Secured by Paystack · ₦100 minimum</div>
-          </form>
+          </form>*/}
+          <div style={{
+            border: "1px solid rgba(26,10,255,.1)",
+            borderRadius: 16,
+            padding: 24,
+            background: "rgba(26,10,255,.02)"
+          }}>
+            <h3 style={{marginBottom: 12}}>Bank Transfer</h3>
+          
+            <p style={{marginBottom: 10, fontWeight: 600}}>
+              THE HOLYSPIRIT HUB INTERNATIONAL
+            </p>
+          
+            <div style={{fontSize: 14, color: "var(--grey)", lineHeight: 1.8}}>
+              <p><strong>Bank:</strong> UBA</p>
+              <p><strong>Naira:</strong> 1030053633</p>
+              <p><strong>Dollar:</strong> 3005121921</p>
+              <p><strong>Pounds:</strong> 3005122739</p>
+            </div>
+            <button onClick={() => navigator.clipboard.writeText("1030053633")}>
+              Copy Naira Account
+            </button>
+          </div>
         </div>
       </div>
       <div>
