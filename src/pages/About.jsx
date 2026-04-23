@@ -65,7 +65,19 @@ export default function About() {
 
         .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
         .team-card{text-align:center;}
-        .team-card img{width:100%;height:220px;object-fit:cover;border-radius:16px;}
+        .team-img{
+          width:100%;
+          height:240px;
+          object-fit:cover;
+          object-position:center top; /* 👈 THIS FIXES FACE */
+          border-radius:16px;
+          cursor:pointer;
+          transition:.3s;
+        }
+        
+        .team-img:hover{
+          transform:scale(1.03);
+        }
 
         .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
         .gallery-img{width:100%;height:200px;object-fit:cover;border-radius:16px;cursor:pointer;transition:.3s;}
@@ -169,7 +181,12 @@ export default function About() {
           <div className="team-grid">
             {team.map((t)=>(
               <div key={t.name} className="team-card">
-                <img src={t.img} alt={t.name} />
+                <img
+                  src={t.img}
+                  alt={t.name}
+                  className="team-img"
+                  onClick={() => setPreview(t.img)}
+                />
                 <h4>{t.name}</h4>
                 <p>{t.role}</p>
               </div>
@@ -211,9 +228,13 @@ export default function About() {
 
       {/* LIGHTBOX */}
       {preview && (
-        <div className="lightbox" onClick={()=>setPreview(null)}>
-          <img src={preview} alt="Preview" />
-        </div>
+      <div className="lightbox" onClick={() => setPreview(null)}>
+        <img
+          src={preview}
+          alt="Preview"
+          onClick={(e) => e.stopPropagation()} // 👈 prevents closing when clicking image
+        />
+      </div>
       )}
     </>
   );
