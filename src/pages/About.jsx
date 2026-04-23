@@ -187,7 +187,53 @@ export default function About() {
           </div>
         </div>
       </section>
-
+      <section className="section" style={{ background: "var(--grey-light)" }}>
+        <div className="container">
+      
+          <div className="mission-vision-grid">
+      
+            {/* MISSION */}
+            <div style={{
+              background: "white",
+              borderRadius: 24,
+              padding: 40,
+              borderLeft: "4px solid var(--blue)"
+            }}>
+              <div style={{ fontSize: 28 }}>🎯</div>
+              <div className="label">Mission</div>
+      
+              <h3 style={{ margin: "10px 0" }}>What We Do</h3>
+      
+              <p style={{ color: "var(--grey)", lineHeight: 1.8 }}>
+                To raise believers who are conscious of the Holy Spirit and empowered
+                to influence every sphere of life — Family, Education, Religion,
+                Business & Finance, Leadership & Politics, Media & Entertainment,
+                and Art & Culture — through The Word, Prayer, Evangelism, and Unity.
+              </p>
+            </div>
+      
+            {/* VISION */}
+            <div style={{
+              background: "white",
+              borderRadius: 24,
+              padding: 40,
+              borderLeft: "4px solid var(--gold)"
+            }}>
+              <div style={{ fontSize: 28 }}>👁️</div>
+              <div className="label" style={{ color: "var(--gold)" }}>Vision</div>
+      
+              <h3 style={{ margin: "10px 0" }}>Where We Are Going</h3>
+      
+              <p style={{ color: "var(--grey)", lineHeight: 1.8 }}>
+                A generation of believers who live daily in the consciousness of the
+                Holy Spirit, manifesting the life of Christ and transforming their world.
+              </p>
+            </div>
+      
+          </div>
+      
+        </div>
+      </section>
       {/* BELIEFS (NUMBERING PRESERVED) */}
       <section className="section">
         <div className="container">
