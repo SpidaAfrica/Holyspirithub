@@ -9,7 +9,7 @@ import tochi from "../assets/Tochi.jpeg";
 import blessing from "../assets/Blessing.jpeg";
 import precious from "../assets/Precious.jpeg";
 
-// GALLERY IMAGES
+// GALLERY
 import g1 from "../assets/gallery-1.jpg";
 import g2 from "../assets/gallery-3.jpg";
 import g3 from "../assets/gallery-4.jpeg";
@@ -26,9 +26,9 @@ export default function About() {
     { title: "The Death & Resurrection of Jesus", desc: "We believe in the death, burial and resurrection of Jesus Christ." },
     { title: "The Trinity", desc: "We believe in God the Father, God the Son and God the Holy Spirit." },
     { title: "Jesus is God", desc: "Jesus Christ is fully God and Savior of the world." },
-    { title: "The Holy Spirit is God", desc: "The Holy Spirit is God, active and present in believers." },
-    { title: "Unity of Saints", desc: "We believe in the unity of all believers." },
-    { title: "Victory in Christ", desc: "We have victory over sin, death, sickness and poverty through Christ." }
+    { title: "The Holy Spirit is God", desc: "The Holy Spirit is God—present and active." },
+    { title: "Unity of Saints", desc: "We believe in unity among believers." },
+    { title: "Victory in Christ", desc: "We have victory over sin, death, sickness and poverty." }
   ];
 
   const team = [
@@ -46,8 +46,9 @@ export default function About() {
     { img: g3, cat: "KTHS" }
   ];
 
-  const filteredGallery =
-    filter === "All" ? gallery : gallery.filter(g => g.cat === filter);
+  const filteredGallery = filter === "All"
+    ? gallery
+    : gallery.filter(g => g.cat === filter);
 
   return (
     <>
@@ -59,7 +60,8 @@ export default function About() {
         .mission-vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
 
         .beliefs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px;}
-        .belief-card{border:1px solid rgba(26,10,255,.1);border-radius:16px;padding:28px;}
+        .belief-card{border:1px solid rgba(26,10,255,.1);border-radius:16px;padding:28px;transition:.3s;}
+        .belief-card:hover{background:rgba(26,10,255,.03);}
         .belief-num{font-size:48px;color:rgba(26,10,255,.1);}
 
         .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
@@ -70,7 +72,7 @@ export default function About() {
         .gallery-img{width:100%;height:200px;object-fit:cover;border-radius:16px;cursor:pointer;}
 
         .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;}
-        .lightbox img{max-width:90%;max-height:80%;}
+        .lightbox img{max-width:90%;max-height:80%;border-radius:16px;}
 
         @media(max-width:900px){
           .ab-story,.beliefs-grid,.team-grid,.gallery-grid,.mission-vision-grid{
@@ -94,7 +96,9 @@ export default function About() {
             </div>
 
             <div>
-              <h2>Our Story</h2>
+              <div className="label">Our Story</div>
+              <h2 className="section-title">Born from an <em>Encounter</em></h2>
+
               <p>
                 HolySpirit Hub started January 28th, 2022 in Ota, Ogun State,
                 following God's instruction to raise believers conscious of the Holy Spirit.
@@ -109,8 +113,9 @@ export default function About() {
         <div className="container">
           <div className="mission-vision-grid">
 
-            <div style={{background:"white",padding:40,borderRadius:20}}>
-              <h3>Mission</h3>
+            <div style={{background:"white",borderRadius:24,padding:48}}>
+              <div className="label">Mission</div>
+              <h3>What We Do</h3>
               <p>
                 To raise believers who are conscious of the Holy Spirit and empowered
                 to influence every sphere of life — Family, Education, Religion,
@@ -119,8 +124,9 @@ export default function About() {
               </p>
             </div>
 
-            <div style={{background:"white",padding:40,borderRadius:20}}>
-              <h3>Vision</h3>
+            <div style={{background:"white",borderRadius:24,padding:48}}>
+              <div className="label">Vision</div>
+              <h3>Where We Are Going</h3>
               <p>
                 A generation of believers who live daily in the consciousness of the
                 Holy Spirit, manifesting the life of Christ and transforming their world.
@@ -134,7 +140,8 @@ export default function About() {
       {/* BELIEFS */}
       <section className="section">
         <div className="container">
-          <h2>Our Beliefs</h2>
+          <div className="label">What We Believe</div>
+          <h2 className="section-title">Our Core <em>Beliefs</em></h2>
 
           <div className="beliefs-grid">
             {beliefs.map((b,i)=>(
@@ -149,9 +156,12 @@ export default function About() {
       </section>
 
       {/* TEAM */}
-      <section className="section">
+      <section className="section" style={{background:"var(--grey-light)"}}>
         <div className="container">
-          <h2>Meet the Team</h2>
+          <div style={{textAlign:"center"}}>
+            <div className="label">Our Leaders</div>
+            <h2 className="section-title">Meet the <em>Team</em></h2>
+          </div>
 
           <div className="team-grid">
             {team.map(t=>(
@@ -184,7 +194,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* LIGHTBOX */}
       {preview && (
         <div className="lightbox" onClick={()=>setPreview(null)}>
           <img src={preview} alt="Preview" />
