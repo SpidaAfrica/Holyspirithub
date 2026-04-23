@@ -9,7 +9,7 @@ import tochi from "../assets/Tochi.jpeg";
 import blessing from "../assets/Blessing.jpeg";
 import precious from "../assets/Precious.jpeg";
 
-// GALLERY
+// GALLERY IMAGES
 import g1 from "../assets/gallery-1.jpg";
 import g2 from "../assets/gallery-3.jpg";
 import g3 from "../assets/gallery-4.jpeg";
@@ -46,9 +46,8 @@ export default function About() {
     { img: g3, cat: "KTHS" }
   ];
 
-  const filteredGallery = filter === "All"
-    ? gallery
-    : gallery.filter(g => g.cat === filter);
+  const filteredGallery =
+    filter === "All" ? gallery : gallery.filter((g) => g.cat === filter);
 
   return (
     <>
@@ -69,9 +68,14 @@ export default function About() {
         .team-card img{width:100%;height:220px;object-fit:cover;border-radius:16px;}
 
         .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
-        .gallery-img{width:100%;height:200px;object-fit:cover;border-radius:16px;cursor:pointer;}
+        .gallery-img{width:100%;height:200px;object-fit:cover;border-radius:16px;cursor:pointer;transition:.3s;}
+        .gallery-img:hover{transform:scale(1.05);}
 
-        .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;}
+        .filters{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
+        .filter-btn{padding:8px 18px;border-radius:50px;border:1px solid var(--blue);cursor:pointer;background:transparent;}
+        .active{background:var(--blue);color:white;}
+
+        .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;z-index:1000;}
         .lightbox img{max-width:90%;max-height:80%;border-radius:16px;}
 
         @media(max-width:900px){
@@ -98,7 +102,6 @@ export default function About() {
             <div>
               <div className="label">Our Story</div>
               <h2 className="section-title">Born from an <em>Encounter</em></h2>
-
               <p>
                 HolySpirit Hub started January 28th, 2022 in Ota, Ogun State,
                 following God's instruction to raise believers conscious of the Holy Spirit.
@@ -164,7 +167,7 @@ export default function About() {
           </div>
 
           <div className="team-grid">
-            {team.map(t=>(
+            {team.map((t)=>(
               <div key={t.name} className="team-card">
                 <img src={t.img} alt={t.name} />
                 <h4>{t.name}</h4>
@@ -180,6 +183,18 @@ export default function About() {
         <div className="container">
           <h2>Hub Gallery</h2>
 
+          <div className="filters">
+            {["All","Sunday Service","Crusades","KTHS"].map((c)=>(
+              <button
+                key={c}
+                className={`filter-btn ${filter===c?"active":""}`}
+                onClick={()=>setFilter(c)}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+
           <div className="gallery-grid">
             {filteredGallery.map((g,i)=>(
               <img
@@ -194,6 +209,7 @@ export default function About() {
         </div>
       </section>
 
+      {/* LIGHTBOX */}
       {preview && (
         <div className="lightbox" onClick={()=>setPreview(null)}>
           <img src={preview} alt="Preview" />
