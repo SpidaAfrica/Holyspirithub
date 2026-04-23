@@ -69,7 +69,7 @@ export default function About() {
           width:100%;
           height:240px;
           object-fit:cover;
-          object-position:center top; /* 👈 THIS FIXES FACE */
+          object-position:center 20%;/* 👈 THIS FIXES FACE */
           border-radius:16px;
           cursor:pointer;
           transition:.3s;
