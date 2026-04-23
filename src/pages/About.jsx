@@ -11,8 +11,8 @@ import blessing from "../assets/Blessing.jpeg";
 import precious from "../assets/Precious.jpeg";
 
 // GALLERY IMAGES
-import g1 from "../assets/gallery-1.jpeg";
-import g2 from "../assets/gallery-3.jpeg";
+import g1 from "../assets/gallery-1.jpg";
+import g2 from "../assets/gallery-3.jpg";
 import g3 from "../assets/gallery-4.jpg";
 
 export default function About() {
