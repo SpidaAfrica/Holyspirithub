@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import logoBlue from "../assets/logo-blue.png";
 
 // TEAM IMAGES
-import benjamin from "../assets/team-benjamin.jpg";
-import damilola from "../assets/team-dami.jpg";
-import eucharia from "../assets/team-eucharia.jpg";
-import victory from "../assets/team-victory.jpg";
-import tochi from "../assets/team-tochi.jpg";
-import blessing from "../assets/team-blessing.jpg";
-import precious from "../assets/team-precious.jpg";
+import benjamin from "../assets/Benjamin.jpeg";
+//import damilola from "../assets/teaami.jpg";
+import eucharia from "../assets/Eucharia.jpeg";
+import victory from "../assets/Victory.jpeg";
+import tochi from "../assets/Tochi.jpeg";
+import blessing from "../assets/Blessing.jpeg";
+import precious from "../assets/Precious.jpeg";
 
 // GALLERY IMAGES
 import g1 from "../assets/gallery1.jpg";
@@ -54,7 +54,7 @@ export default function About() {
   // 🔥 TEAM
   const team = [
     { name: "Benjamin Uwa", role: "Founder & Lead Pastor", img: benjamin },
-    { name: "Oluwadamilola Benjamin-Uwa", role: "Media Ministry Pastor", img: damilola },
+    //{ name: "Oluwadamilola Benjamin-Uwa", role: "Media Ministry Pastor", img: damilola },
     { name: "Eucharia Abuato", role: "SMR & Organizing Ministry Pastor", img: eucharia },
     { name: "Victory Abuato", role: "Music Ministry Pastor", img: victory },
     { name: "Tochi Akpogu", role: "Praying Ministry Pastor", img: tochi },
