@@ -13,7 +13,7 @@ import precious from "../assets/Precious.jpeg";
 // GALLERY IMAGES
 import g1 from "../assets/gallery-1.jpg";
 import g2 from "../assets/gallery-3.jpg";
-import g3 from "../assets/gallery-4.jpg";
+import g3 from "../assets/gallery-4.jpeg";
 
 export default function About() {
   const [filter, setFilter] = useState("All");
