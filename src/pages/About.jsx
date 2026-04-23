@@ -145,7 +145,18 @@ export default function About() {
           border: 1px solid var(--blue);
           cursor: pointer;
         }
-
+      .mission-vision-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+      
+      @media (max-width: 900px) {
+        .mission-vision-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+      }
         .active {
           background: var(--blue);
           color: white;
