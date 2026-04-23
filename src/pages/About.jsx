@@ -1,31 +1,263 @@
-import { useEffect } from "react";
-//import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import logoBlue from "../assets/logo-blue.png";
 
+// TEAM IMAGES
+import benjamin from "../assets/team-benjamin.jpg";
+import damilola from "../assets/team-dami.jpg";
+import eucharia from "../assets/team-eucharia.jpg";
+import victory from "../assets/team-victory.jpg";
+import tochi from "../assets/team-tochi.jpg";
+import blessing from "../assets/team-blessing.jpg";
+import precious from "../assets/team-precious.jpg";
+
+// GALLERY IMAGES
+import g1 from "../assets/gallery1.jpg";
+import g2 from "../assets/gallery2.jpg";
+import g3 from "../assets/gallery3.jpg";
+
 export default function About() {
-  useEffect(()=>{ document.title="About — HolySpirit Hub"; },[]);
-  const team=[{name:"Pastor David Eze",role:"Founder & Lead Teacher",initials:"DE"},{name:"Minister Ruth Okafor",role:"Worship Director",initials:"RO"},{name:"Elder James Nwosu",role:"Prayer & Intercession",initials:"JN"},{name:"Pastor Ife Adeleke",role:"Community & Outreach",initials:"IA"}];
-  const beliefs=[{title:"The Holy Spirit is a Person",desc:"Not a force or feeling, but the Third Person of the Godhead — relational, personal, and present."},{title:"Scripture is our Foundation",desc:"We hold the Bible as the inspired Word of God, our ultimate authority for faith and practice."},{title:"Every Believer Can Walk in the Spirit",desc:"Spirit-consciousness isn't reserved for a few — it's available to every child of God."},{title:"Unity Beyond Denomination",desc:"We welcome all believers regardless of church background, united by our focus on the Holy Spirit."}];
+  const [filter, setFilter] = useState("All");
+  const [preview, setPreview] = useState(null);
+
+  useEffect(() => {
+    document.title = "About — HolySpirit Hub";
+  }, []);
+
+  // 🔥 BELIEFS (WITH NUMBERING SYSTEM)
+  const beliefs = [
+    {
+      title: "The Death & Resurrection of Jesus",
+      desc: "We believe in the death, burial and resurrection of Jesus Christ as the foundation of our faith."
+    },
+    {
+      title: "The Trinity",
+      desc: "We believe in God the Father, God the Son and God the Holy Spirit—three in one."
+    },
+    {
+      title: "Jesus is God",
+      desc: "Jesus Christ is fully God and fully man, the Savior of the world."
+    },
+    {
+      title: "The Holy Spirit is God",
+      desc: "The Holy Spirit is not a force but God Himself—present, active, and dwelling within believers."
+    },
+    {
+      title: "Unity of the Saints",
+      desc: "We believe in the unity of all believers regardless of denomination."
+    },
+    {
+      title: "Victory in Christ",
+      desc: "Through Christ we have victory over sin, death, sickness, poverty, and all consequences of the fall."
+    }
+  ];
+
+  // 🔥 TEAM
+  const team = [
+    { name: "Benjamin Uwa", role: "Founder & Lead Pastor", img: benjamin },
+    { name: "Oluwadamilola Benjamin-Uwa", role: "Media Ministry Pastor", img: damilola },
+    { name: "Eucharia Abuato", role: "SMR & Organizing Ministry Pastor", img: eucharia },
+    { name: "Victory Abuato", role: "Music Ministry Pastor", img: victory },
+    { name: "Tochi Akpogu", role: "Praying Ministry Pastor", img: tochi },
+    { name: "Blessing Martins", role: "Follow-up Ministry Pastor", img: blessing },
+    { name: "Precious Abuato", role: "Drama Ministry Head", img: precious }
+  ];
+
+  // 🔥 GALLERY
+  const gallery = [
+    { img: g1, cat: "Sunday Service" },
+    { img: g2, cat: "Crusades" },
+    { img: g3, cat: "KTHS" }
+  ];
+
+  const filteredGallery =
+    filter === "All" ? gallery : gallery.filter((g) => g.cat === filter);
+
   return (
     <>
-      <style>{`.mission-vision-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
+      <style>{`
+        .beliefs-grid {
+          display: grid;
+          grid-template-columns: repeat(2,1fr);
+          gap: 24px;
+          margin-top: 48px;
+        }
 
-/* 🔥 Mobile fix */
-@media (max-width: 900px) {
-  .mission-vision-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}.ab-story{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}.ab-vis{aspect-ratio:1;background:linear-gradient(135deg,var(--grey-light),#e8e4ff);border-radius:28px;display:flex;align-items:center;justify-content:center;overflow:hidden;}.ab-vis img{width:70%;opacity:.9;filter:drop-shadow(0 20px 40px rgba(26,10,255,.3));}.beliefs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px;}.belief-card{border:1px solid rgba(26,10,255,.1);border-radius:16px;padding:28px;transition:all .3s;}.belief-card:hover{border-color:var(--blue);background:rgba(26,10,255,.02);}.belief-num{font-family:var(--ffh);font-size:48px;font-weight:700;color:rgba(26,10,255,.1);margin-bottom:8px;}.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;}.team-card{text-align:center;}.team-av{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;color:white;margin:0 auto 16px;font-family:var(--ffh);}@media(max-width:900px){.ab-story{grid-template-columns:1fr;}.beliefs-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:repeat(2,1fr);}}@media(max-width:600px){.team-grid{grid-template-columns:1fr;}}`}</style>
-      <div className="page-hero"><h1>About <em style={{color:"var(--gold)"}}>HolySpirit Hub</em></h1><p>A ministry born from an encounter — devoted to helping you encounter Him too.</p></div>
-      <section className="section"><div className="container"><div className="ab-story"><div className="ab-vis"><img src={logoBlue} alt=""/></div><div><div className="label">Our Story</div><h2 className="section-title">Born from an <em>Encounter</em></h2><div className="divider"/><p style={{color:"var(--grey)",lineHeight:1.8,marginBottom:20}}>HolySpirit Hub was founded on a simple yet profound conviction — that the church has largely treated the Holy Spirit as a theology rather than a Person. A doctrine rather than a companion.</p><p style={{color:"var(--grey)",lineHeight:1.8,marginBottom:20}}>What began as a small prayer group in Lagos in 2018 has grown into a global ministry touching lives across 120+ nations.</p><div style={{display:"flex",gap:32}}>{[["2018","Founded"],["120+","Nations"],["50K+","Community"]].map(([n,l])=><div key={l}><div style={{fontFamily:"var(--ffh)",fontSize:36,fontWeight:700,color:"var(--blue)"}}>{n}</div><div style={{fontSize:13,color:"var(--grey)"}}>{l}</div></div>)}</div></div></div></div></section>
-      <section className="section" style={{background:"var(--grey-light)"}}><div className="container"><div className="mission-vision-grid"><div style={{background:"white",borderRadius:24,padding:48,borderLeft:"4px solid var(--blue)"}}><div style={{fontSize:32,marginBottom:12}}>🎯</div><div className="label">Mission</div><h3 style={{fontSize:28,margin:"8px 0 16px"}}>What We Do</h3><p style={{color:"var(--grey)",lineHeight:1.8}}>To bring every believer into a living, conscious, daily relationship with the Holy Spirit — through teaching, worship, prayer and community.</p></div><div style={{background:"white",borderRadius:24,padding:48,borderLeft:"4px solid var(--gold)"}}><div style={{fontSize:32,marginBottom:12}}>👁️</div><div className="label" style={{color:"var(--gold)"}}>Vision</div><h3 style={{fontSize:28,margin:"8px 0 16px"}}>Where We're Going</h3><p style={{color:"var(--grey)",lineHeight:1.8}}>A world where every believer wakes up aware of the Holy Spirit's presence and experiences Spirit-life as the normal Christian life.</p></div></div></div></section>
-      <section className="section"><div className="container"><div className="label">What We Believe</div><h2 className="section-title">Our Core <em>Beliefs</em></h2><div className="beliefs-grid">{beliefs.map((b,i)=><div key={b.title} className="belief-card"><div className="belief-num">0{i+1}</div><h3 style={{fontSize:20,marginBottom:10}}>{b.title}</h3><p style={{color:"var(--grey)",lineHeight:1.7}}>{b.desc}</p></div>)}</div></div></section>
-      <section className="section" style={{background:"var(--grey-light)"}}><div className="container"><div style={{textAlign:"center"}}><div className="label">Our Leaders</div><h2 className="section-title">Meet the <em>Team</em></h2></div><div className="team-grid">{team.map(t=><div key={t.name} className="team-card"><div className="team-av">{t.initials}</div><div style={{fontWeight:600,fontSize:17,marginBottom:4}}>{t.name}</div><div style={{fontSize:13,color:"var(--grey)"}}>{t.role}</div></div>)}</div></div></section>
+        .belief-card {
+          border: 1px solid rgba(26,10,255,.1);
+          border-radius: 16px;
+          padding: 28px;
+        }
+
+        .belief-num {
+          font-size: 48px;
+          font-weight: 700;
+          color: rgba(26,10,255,.1);
+          margin-bottom: 8px;
+        }
+
+        .team-grid, .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(3,1fr);
+          gap: 24px;
+          margin-top: 40px;
+        }
+
+        .team-card img {
+          width: 100%;
+          height: 220px;
+          object-fit: cover;
+          border-radius: 16px;
+        }
+
+        .gallery-img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 16px;
+          cursor: pointer;
+        }
+
+        .lightbox {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,.85);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+        }
+
+        .lightbox img {
+          max-width: 90%;
+          max-height: 80%;
+        }
+
+        .filters {
+          display: flex;
+          gap: 10px;
+          margin-top: 20px;
+          flex-wrap: wrap;
+        }
+
+        .filter-btn {
+          padding: 8px 18px;
+          border-radius: 50px;
+          border: 1px solid var(--blue);
+          cursor: pointer;
+        }
+
+        .active {
+          background: var(--blue);
+          color: white;
+        }
+
+        @media(max-width:900px){
+          .beliefs-grid, .team-grid, .gallery-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
+      {/* STORY */}
+      <section className="section">
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60 }}>
+            <img src={logoBlue} alt="" style={{ width: "70%" }} />
+
+            <div>
+              <h2>Our Story</h2>
+
+              <p>
+                HolySpirit Hub started on January 28th, 2022 in Ota, Ogun State,
+                following a divine instruction given to Benjamin Uwa—to raise a people
+                who are conscious of the Holy Spirit.
+              </p>
+
+              <p>
+                We are committed to influencing every sphere of life:
+                Family, Education, Religion, Business & Finance,
+                Leadership & Politics, Media & Entertainment, Art & Culture.
+              </p>
+
+              <p>
+                Our core values are:
+                <strong> The Word, Prayer, Evangelism and Unity.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BELIEFS (NUMBERING PRESERVED) */}
+      <section className="section">
+        <div className="container">
+          <h2>Our Beliefs</h2>
+
+          <div className="beliefs-grid">
+            {beliefs.map((b, i) => (
+              <div key={b.title} className="belief-card">
+                <div className="belief-num">0{i + 1}</div>
+                <h3>{b.title}</h3>
+                <p>{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section className="section">
+        <div className="container">
+          <h2>Meet the Team</h2>
+
+          <div className="team-grid">
+            {team.map((t) => (
+              <div key={t.name} className="team-card">
+                <img src={t.img} alt={t.name} />
+                <h4>{t.name}</h4>
+                <p>{t.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section className="section">
+        <div className="container">
+          <h2>Hub Gallery</h2>
+
+          <div className="filters">
+            {["All","Sunday Service","Crusades","KTHS"].map((c)=>(
+              <button
+                key={c}
+                className={`filter-btn ${filter===c?"active":""}`}
+                onClick={()=>setFilter(c)}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+
+          <div className="gallery-grid">
+            {filteredGallery.map((g,i)=>(
+              <img
+                key={i}
+                src={g.img}
+                className="gallery-img"
+                onClick={()=>setPreview(g.img)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LIGHTBOX */}
+      {preview && (
+        <div className="lightbox" onClick={()=>setPreview(null)}>
+          <img src={preview} alt="" />
+        </div>
+      )}
     </>
   );
 }
