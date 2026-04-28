@@ -36,3 +36,12 @@ export const endSession         = (code)   => call("/prayer-live/end.php",      
 export const sendReaction       = (body)   => call("/prayer-live/react.php",    { method:"POST", body:JSON.stringify(body) });
 export const sendMessage        = (body)   => call("/prayer-live/message.php",  { method:"POST", body:JSON.stringify(body) });
 export const pollSession        = (code,since) => call(`/prayer-live/poll.php?code=${code}${since?`&since=${since}`:""}`);
+
+// Gallery
+export const fetchGallery       = (params) => call(`/gallery/list.php?${new URLSearchParams(params||{})}`);
+
+// Event Flyers
+export const fetchFlyers        = (params) => call(`/events/flyers.php?${new URLSearchParams(params||{limit:10})}`);
+
+// Feedback
+export const submitFeedback     = (body)   => call("/feedback/submit.php", { method:"POST", body:JSON.stringify(body) });

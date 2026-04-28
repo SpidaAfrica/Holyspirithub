@@ -16,6 +16,7 @@ import Give          from "./pages/Give";
 import Community     from "./pages/Community";
 import Blog          from "./pages/Blog";
 import Contact       from "./pages/Contact";
+import Feedback      from "./pages/Feedback";
 import NotFound      from "./pages/NotFound";
 
 // Scroll to top on every route change
@@ -49,6 +50,7 @@ function Layout() {
           <Route path="/blog"        element={<Blog />}       />
           <Route path="/blog/:slug"  element={<Blog />}       />
           <Route path="/contact"     element={<Contact />}    />
+          <Route path="/feedback"    element={<Feedback />}   />
           <Route path="*"            element={<NotFound />}   />
         </Routes>
       </main>

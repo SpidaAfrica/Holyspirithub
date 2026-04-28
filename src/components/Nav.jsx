@@ -12,6 +12,7 @@ const NAV_LINKS = [
   //{ to: "/prayer-live",label: "Pray Live 🔴"},
   { to: "/blog",       label: "Blog"       },
   { to: "/contact",    label: "Contact"    },
+  { to: "/feedback",   label: "Feedback"   },
 ];
 
 export default function Nav() {
